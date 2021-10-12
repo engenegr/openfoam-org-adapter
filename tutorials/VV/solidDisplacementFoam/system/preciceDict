@@ -1,0 +1,33 @@
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      preciceDict;
+}
+
+preciceConfig "precice-config.xml";
+
+participant solidDisplacementFoam;
+
+modules (VV);
+
+interfaces
+{
+  Interface1
+  {
+    mesh              Stress-Mesh;
+    locations         cellCentres;
+
+    readData
+    (
+      Temperature
+    );
+    
+    writeData
+    (
+      //Displacement
+    );
+  };
+};

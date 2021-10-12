@@ -1,0 +1,33 @@
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      preciceDict;
+}
+
+preciceConfig "precice-config.xml";
+
+participant laplacianFoam;
+
+modules (VV);
+
+interfaces
+{
+  Interface1
+  {
+    mesh              Heat-Mesh;
+    locations         cellCentres;
+
+    readData
+    (
+      //Displacement
+    );
+    
+    writeData
+    (
+      Temperature
+    );
+  };
+};

@@ -4,7 +4,8 @@
 
 This project is intended to work with Foundation releases only.
 This is a fork of original [OpenFOAM preCICE adapter](https://github.com/precice/openfoam-adapter)
-and designed while taking into account the code written by @Alphaoo1 and @JaegerSt! from Austrian Institute of 
+and designed while taking into account the code written by [@Alphaoo1](https://github.com/Alphaoo1/openfoam-adapter/tree/VolumeCoupling_Module) 
+and [@JaegerSt!](https://github.com/JaegerSt/openfoam-adapter/tree/dev_volume_coupling_AIT) from Austrian Institute of 
 Technology. 
 
 As of October 2021 it supports building with OpenFOAM-dev and should support OpenFOAM9.

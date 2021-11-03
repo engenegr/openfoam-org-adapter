@@ -38,10 +38,6 @@ bool preciceAdapter::VV::VolumeVolume::readConfig(const IOdictionary& adapterCon
     */
 
     // Read the name of the pointDisplacement field (if different)
-    nameT_ = VVdict.lookupOrDefault<word>("nameT", "T");
-    DEBUG(adapterInfo("    temperature field name : " + nameT_));
-
-    // Read the name of the pointDisplacement field (if different)
     nameTransportProperties_ = VVdict.lookupOrDefault<word>("nameTransportProperties", "transportProperties");
     DEBUG(adapterInfo("    transportProperties name : " + nameTransportProperties_));
 
@@ -50,13 +46,13 @@ bool preciceAdapter::VV::VolumeVolume::readConfig(const IOdictionary& adapterCon
 
 void preciceAdapter::VV::VolumeVolume::addWriters(std::string dataName, Interface * interface)
 {
-    if (dataName.find("Temperature") == 0)
+    if (dataName == "T")
     {
         interface->addCouplingDataWriter
-        (
-            dataName,
-            new Temperature(mesh_, nameT_)
-        );
+            (
+                dataName,
+                new OpenFOAMScalarField(mesh_, dataName)
+            );
         DEBUG(adapterInfo("Added writer: Temperature."));
     }
     else
@@ -74,12 +70,12 @@ void preciceAdapter::VV::VolumeVolume::addWriters(std::string dataName, Interfac
 void preciceAdapter::VV::VolumeVolume::addReaders(std::string dataName, Interface * interface)
 {
 
-    if (dataName.find("Temperature") == 0)
+    if (dataName == "T")
     {
         interface->addCouplingDataReader
         (
             dataName,
-            new Temperature(mesh_, nameT_)
+            new OpenFOAMScalarField(mesh_, dataName)
         );
         DEBUG(adapterInfo("Added reader: Temperature."));
     }

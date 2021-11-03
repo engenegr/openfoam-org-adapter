@@ -1,10 +1,10 @@
-#include "Temperature.H"
+#include "OpenFOAMScalarField.H"
 #include "primitivePatchInterpolation.H"
 
 
 using namespace Foam;
 
-preciceAdapter::VV::Temperature::Temperature(
+preciceAdapter::VV::OpenFOAMScalarField::OpenFOAMScalarField(
         const Foam::fvMesh& mesh,
         const std::string nameT)
         : T_(
@@ -15,7 +15,7 @@ preciceAdapter::VV::Temperature::Temperature(
     dataType_ = scalar;
 }
 
-void preciceAdapter::VV::Temperature::write(double* buffer, bool meshConnectivity, const unsigned int dim)
+void preciceAdapter::VV::OpenFOAMScalarField::write(double* buffer, bool meshConnectivity, const unsigned int dim)
 {
     int bufferIndex = 0;
 
@@ -46,7 +46,7 @@ void preciceAdapter::VV::Temperature::write(double* buffer, bool meshConnectivit
 }
 
 
-void preciceAdapter::VV::Temperature::read(double* buffer, const unsigned int dim)
+void preciceAdapter::VV::OpenFOAMScalarField::read(double* buffer, const unsigned int dim)
 {
     int bufferIndex = 0;
 

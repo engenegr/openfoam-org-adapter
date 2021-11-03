@@ -10,26 +10,26 @@
 
     <solver-interface dimensions="3">
 
-    <data:scalar name="Temperature"/>
+    <data:scalar name="T"/>
 
     <mesh name="Heat-Mesh">
-        <use-data name="Temperature"/>
+        <use-data name="T"/>
     </mesh>
 
     <mesh name="Stress-Mesh">
-        <use-data name="Temperature"/>
+        <use-data name="T"/>
     </mesh>
 
     <participant name="laplacianFoam">
         <use-mesh name="Heat-Mesh" provide="yes"/>
         <use-mesh name="Stress-Mesh" from="solidDisplacementFoam"/>
-        <write-data name="Temperature" mesh="Heat-Mesh"/>
+        <write-data name="T" mesh="Heat-Mesh"/>
     </participant>
 
     <participant name="solidDisplacementFoam">
         <use-mesh name="Heat-Mesh" from="laplacianFoam"/>
         <use-mesh name="Stress-Mesh" provide="yes"/>
-        <read-data name="Temperature" mesh="Stress-Mesh"/>
+        <read-data name="T" mesh="Stress-Mesh"/>
         <mapping:nearest-neighbor direction="read" from="Heat-Mesh" to="Stress-Mesh" constraint="consistent" timing="initial"/>
     </participant>
 
@@ -39,7 +39,7 @@
         <time-window-size value="1" />
         <max-time-windows value="100" />
         <participants first="laplacianFoam" second="solidDisplacementFoam"/>
-        <exchange data="Temperature" mesh="Heat-Mesh" from="laplacianFoam" to="solidDisplacementFoam"/>
+        <exchange data="T" mesh="Heat-Mesh" from="laplacianFoam" to="solidDisplacementFoam"/>
     </coupling-scheme:serial-explicit>
     </solver-interface>
 

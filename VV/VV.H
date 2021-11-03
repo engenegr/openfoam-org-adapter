@@ -3,7 +3,7 @@
 
 #include "Interface.H"
 
-#include "VV/Temperature.H"
+#include "VV/OpenFOAMScalarField.H"
 
 #include "fvCFD.H"
 
@@ -27,9 +27,6 @@ protected:
 
     //- Name of the transportProperties dictionary
     std::string nameTransportProperties_ = "transportProperties";
-
-    //- Name of the temperature field
-    std::string nameT_ = "T";
 
 
 protected:

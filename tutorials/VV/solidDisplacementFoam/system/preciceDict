@@ -22,7 +22,7 @@ interfaces
 
     readData
     (
-      Temperature
+      T
     );
     
     writeData

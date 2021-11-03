@@ -1,5 +1,5 @@
-#ifndef VV_TEMPERATURE_H
-#define VV_TEMPERATURE_H
+#ifndef VV_OFSCALARFIELD_H
+#define VV_OFSCALARFIELD_H
 
 #include "CouplingDataUser.H"
 #include "fvCFD.H"
@@ -10,7 +10,7 @@ namespace VV
 {
 
 //- Class that writes and reads temperature.
-class Temperature : public CouplingDataUser
+class OpenFOAMScalarField : public CouplingDataUser
 {
 
 private:
@@ -22,7 +22,7 @@ private:
 public:
 
     //- Constructor
-    Temperature
+    OpenFOAMScalarField
     (
         const Foam::fvMesh& mesh,
         const std::string nameT

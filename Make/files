@@ -26,7 +26,7 @@ FF/Pressure.C
 FF/PressureGradient.C
 
 VV/VV.C
-VV/Temperature.C
+VV/OpenFOAMScalarField.C
 
 Adapter.C
 
